@@ -34,8 +34,8 @@ COVER_SIDE = 600         # square album covers
 QUALITY = 82
 COVER_NAME = 'cover.jpg'
 
-SITE_NAME = 'Stanislav Sidorov'
-SITE_DESC = ('Stanislav Sidorov — photographer. Love story, wedding, beauty, '
+SITE_NAME = 'Stanislav Sydorov'
+SITE_DESC = ('Stanislav Sydorov — photographer. Love story, wedding, beauty, '
              'campaign, sport and boudoir photography.')
 
 # Menu order. (section folder, menu label, page title, intro text)
@@ -76,19 +76,30 @@ SRC_PROJECT_PREVIEWS = {
     'victory': 'victorypr.jpg',
 }
 
-# Home page carousel: (photo path, alt text)
+# Home page carousel: (photo, section page, label shown on the slide)
 CAROUSEL = [
-    ('portfolio/beauty/alina/05.jpg', 'Beauty portrait of Alina'),
-    ('portfolio/beauty/kate/03.jpg', 'Beauty portrait of Kate'),
-    ('portfolio/beauty/nataly/01.jpg', 'Beauty portrait of Nataly'),
+    ('portfolio/beauty/kate/01.jpg', 'beauty.html', 'Beauty'),
+    ('portfolio/weddings/wedding-day/001.jpg', 'weddings.html', 'Weddings'),
+    ('portfolio/projects/art/01.jpg', 'projects.html', 'Projects'),
+    ('portfolio/lovestory/evgengala/01.jpg', 'lovestory.html', 'Love story'),
+    ('portfolio/campaign/kate2/01.jpg', 'campaign.html', 'Campaign'),
+    ('portfolio/beauty/nastya/01.jpg', 'beauty.html', 'Beauty'),
+    ('portfolio/weddings/andrewvictoria/01.jpg', 'weddings.html', 'Weddings'),
+    ('portfolio/sport/marina/01.jpg', 'sport.html', 'Sport'),
+    ('portfolio/projects/spring/01.jpg', 'projects.html', 'Projects'),
+    ('portfolio/campaign/tina/01.jpg', 'campaign.html', 'Campaign'),
+    ('portfolio/beauty/helen/01.jpg', 'beauty.html', 'Beauty'),
+    ('portfolio/projects/valeria/01.jpg', 'projects.html', 'Projects'),
 ]
+CAROUSEL_INTERVAL = 5000   # ms per slide
 
 CONTACTS = [
     # (key, label, url, icon, opens new tab)
     ('instagram', 'Instagram — @sidssphoto', 'https://www.instagram.com/sidssphoto/', 'instagram.png', True),
     ('facebook', 'Facebook — ssidorovphoto', 'https://www.facebook.com/ssidorovphoto/', 'facebook.png', True),
     ('telegram', 'Telegram — @sidssphoto', 'https://t.me/sidssphoto', 'telegram.png', True),
-    ('viber', 'Viber — +380 66 446 9440', 'viber://chat?number=%2B380664469440', 'viber.png', False),
+    ('phone', 'Phone — +49 160 454 21 87', 'tel:+491604542187', 'phone.png', False),
+    ('viber', 'Viber — +49 160 454 21 87', 'viber://chat?number=%2B491604542187', 'viber.png', False),
     ('email', 'E-mail — sidssphoto@icloud.com', 'mailto:sidssphoto@icloud.com', 'mail.png', False),
 ]
 
@@ -192,7 +203,7 @@ def image_size(path):
 e = html.escape
 
 
-def page(filename, title, description, body, active=None, extra_scripts=''):
+def page(filename, title, description, body, active=None, extra_scripts='', body_class=''):
     nav_items = [(f'{s}.html', label) for s, label, _, _ in SECTIONS] + [('contact.html', 'Contact')]
     nav = '\n'.join(
         f'          <li class="nav-item"><a class="nav-link{" active" if href == active else ""}" '
@@ -203,12 +214,14 @@ def page(filename, title, description, body, active=None, extra_scripts=''):
         f'{NEW_TAB if new_tab else ""}>'
         f'<img src="icons/{icon}" alt="" width="32" height="32"></a></li>'
         for key, label, url, icon, new_tab in CONTACTS)
+    body_attr = ' class="%s"' % body_class if body_class else ''
     full_title = f'{title} — {SITE_NAME} Photography' if title else f'{SITE_NAME} — Photographer'
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>document.documentElement.classList.add('js')</script>
   <title>{e(full_title)}</title>
   <meta name="description" content="{e(description)}">
   <meta name="author" content="{SITE_NAME}">
@@ -229,11 +242,11 @@ def page(filename, title, description, body, active=None, extra_scripts=''):
   <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body{body_attr}>
   <a class="skip-link" href="#content">Skip to content</a>
 
   <header class="site-header">
-    <a class="site-title" href="index.html">Stanislav&nbsp;Sidorov</a>
+    <a class="site-title" href="index.html">Stanislav&nbsp;Sydorov</a>
   </header>
 
   <nav class="navbar navbar-expand-lg site-nav" aria-label="Main">
@@ -289,14 +302,17 @@ def build_section(section, label, title, intro):
             urls = json.dumps([f'{base}/{p}' for p in photos])
             name = album_title(album)
             count = f'{len(photos)} photo' + ('s' if len(photos) != 1 else '')
+            n = len(cards)
             cards.append(
-                f'      <button type="button" class="album" data-title="{e(name)}" data-photos="{e(urls)}" '
-                f'aria-label="Open album {e(name)}, {count}">\n'
+                f'      <button type="button" class="album reveal" style="--i:{n}" data-title="{e(name)}" '
+                f'data-photos="{e(urls)}" aria-label="Open album {e(name)}, {count}">\n'
                 f'        <img src="{base}/{COVER_NAME}" alt="" width="{COVER_SIDE}" height="{COVER_SIDE}" loading="lazy">\n'
                 f'        <span class="album-caption">{e(name)}<small>{count}</small></span>\n'
                 f'      </button>')
-    body = (f'    <h1 class="page-title">{e(title)}</h1>\n'
-            f'    <p class="intro">{e(intro)} Tap an album to view it.</p>\n'
+    body = (f'    <header class="page-head">\n'
+            f'      <h1 class="page-title">{e(title)}</h1>\n'
+            f'      <p class="intro">{e(intro)} Tap an album to view it.</p>\n'
+            f'    </header>\n'
             f'    <div class="album-grid">\n' + '\n'.join(cards) + '\n    </div>')
     write(f'{section}.html', page(f'{section}.html', title, f'{intro} {SITE_DESC}', body,
                                   active=f'{section}.html',
@@ -305,20 +321,32 @@ def build_section(section, label, title, intro):
 
 def build_home():
     indicators, items = [], []
-    for i, (src, alt) in enumerate(CAROUSEL):
+    total = len(CAROUSEL)
+    for i, (src, link, label) in enumerate(CAROUSEL):
         w, h = image_size(src)
+        album = album_title(src.split('/')[2])
+        alt = f'{label}: {album}'
         active = ' active' if i == 0 else ''
         current = ' aria-current="true"' if i == 0 else ''
         indicators.append(
             f'        <button type="button" data-bs-target="#hero" data-bs-slide-to="{i}" '
-            f'class="{active.strip()}"{current} aria-label="Slide {i + 1}"></button>')
-        loading = '' if i == 0 else ' loading="lazy"'
+            f'class="{active.strip()}"{current} aria-label="Slide {i + 1}: {e(alt)}"></button>')
+        # first two slides load immediately, the rest are loaded by js/hero.js just before they show
+        attr = f'src="{src}"' if i < 2 else f'data-src="{src}"'
         items.append(
             f'        <div class="carousel-item{active}">\n'
-            f'          <img src="{src}" alt="{e(alt)}" width="{w}" height="{h}"{loading}>\n'
+            f'          <img class="hero-bg" {attr} alt="" aria-hidden="true">\n'
+            f'          <img class="hero-photo" {attr} alt="{e(alt)}" width="{w}" height="{h}">\n'
+            f'          <div class="hero-caption">\n'
+            f'            <span class="hero-count">{i + 1:02d} / {total:02d}</span>\n'
+            f'            <span class="hero-label">{e(label)}</span>\n'
+            f'            <span class="hero-album">{e(album)}</span>\n'
+            f'            <a class="hero-link" href="{link}">View gallery</a>\n'
+            f'          </div>\n'
             f'        </div>')
-    body = f'''    <h1 class="visually-hidden">Stanislav Sidorov — photographer</h1>
-    <div id="hero" class="carousel slide hero" data-bs-ride="carousel">
+    body = f'''    <h1 class="visually-hidden">Stanislav Sydorov — photographer</h1>
+    <div id="hero" class="carousel slide carousel-fade hero" data-bs-ride="carousel"
+         data-bs-interval="{CAROUSEL_INTERVAL}" data-bs-pause="hover" aria-roledescription="carousel" aria-label="Selected photos">
       <div class="carousel-indicators">
 {chr(10).join(indicators)}
       </div>
@@ -334,7 +362,8 @@ def build_home():
         <span class="visually-hidden">Next</span>
       </button>
     </div>'''
-    write('index.html', page('index.html', '', SITE_DESC, body))
+    write('index.html', page('index.html', '', SITE_DESC, body, body_class='home',
+                             extra_scripts='  <script src="js/hero.js"></script>\n'))
 
 
 def build_contact():
@@ -347,7 +376,7 @@ def build_contact():
             f'or by e-mail. I will reply as soon as possible.</p>\n'
             f'    <ul class="contact-list">\n{links}\n    </ul>')
     write('contact.html', page('contact.html', 'Contact & prices',
-                               'Book a photo session with Stanislav Sidorov: Instagram, Telegram, Viber, e-mail.',
+                               'Book a photo session with Stanislav Sydorov: Instagram, Telegram, Viber, e-mail.',
                                body, active='contact.html'))
 
 

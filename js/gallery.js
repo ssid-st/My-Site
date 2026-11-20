@@ -8,6 +8,25 @@
 (function () {
   'use strict';
 
+  /* ---- Animated appearance of album cards ---- */
+  var cards = document.querySelectorAll('.reveal');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!('IntersectionObserver' in window) || reduce) {
+    cards.forEach(function (c) { c.classList.add('in'); });
+  } else {
+    var observer = new IntersectionObserver(function (entries) {
+      var n = 0;
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.style.setProperty('--d', n++);
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    cards.forEach(function (c) { observer.observe(c); });
+  }
+
+  /* ---- Lightbox ---- */
   var albums = document.querySelectorAll('.album[data-photos]');
   if (!albums.length) return;
 
