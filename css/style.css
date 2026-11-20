@@ -568,6 +568,9 @@ body.lb-open {
   margin: 0;
   font-size: .8rem;
 }
+.copyright a {
+  color: var(--paper);
+}
 
 /* ---------- Motion preferences ---------- */
 @media (prefers-reduced-motion: reduce) {

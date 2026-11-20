@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stanislav Sydorov, photographer</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../../ico/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../ico/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;500&family=Golos+Text:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --stone:#DCDDD8;   /* page: neutral light-table grey, lets colour photos lead */
+  --graphite:#24272B;/* text */
+  --fog:#6E747B;     /* resting genre names, captions */
+  --teal:#1E7B78;    /* focus + links, taken from the feather-lash beauty shot */
+  --mat:#F6F6F3;     /* photo mat */
+  --display:'Unbounded',system-ui,sans-serif;
+  --text:'Golos Text',system-ui,sans-serif;
+  --gutter:clamp(16px,4vw,56px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--stone)}
+body{background:var(--stone);color:var(--graphite);font:400 1rem/1.55 var(--text);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--teal);outline-offset:4px}
+img{display:block;max-width:100%}
+
+/* top bar */
+.bar{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;padding:22px var(--gutter)}
+.name{font:500 1rem/1.2 var(--display);letter-spacing:.01em;text-decoration:none}
+.bar nav{display:flex;gap:1.25rem;font-size:.95rem}
+.bar nav a{text-decoration:none;color:var(--fog)}
+.bar nav a:hover{color:var(--graphite)}
+
+/* the index: genre names left, one photo right */
+.index{position:relative;display:grid;grid-template-columns:minmax(0,1fr);padding:0 var(--gutter);min-height:calc(100svh - 74px)}
+.genres{list-style:none;align-self:center;padding:4vh 0 8vh;width:44%}
+.genres a{display:block;text-decoration:none;font:300 clamp(2rem,4.6vw,4.4rem)/1.08 var(--display);letter-spacing:-.02em;color:var(--fog);padding:.06em 0;transition:color .25s}
+.genres a .who{display:block;font:400 .9rem/1.4 var(--text);letter-spacing:0;color:var(--fog);height:0;overflow:hidden;opacity:0;transition:opacity .25s}
+.genres li.on a{color:var(--graphite)}
+.genres li.on a .who{height:1.6em;opacity:1}
+.genres figure{position:absolute;top:0;bottom:6vh;right:var(--gutter);width:52%;background:var(--mat);padding:14px;opacity:0;transition:opacity .45s ease;pointer-events:none}
+.genres figure img{width:100%;height:100%;object-fit:cover}
+.genres li.on figure{opacity:1}
+.genres figure.wide img{object-position:center 60%}
+
+.more{margin-top:1.6rem;font-size:.95rem}
+.more a{color:var(--teal);text-underline-offset:3px}
+
+/* booking */
+.book{display:grid;grid-template-columns:44% 1fr;gap:2rem var(--gutter);padding:12vh var(--gutter) 10vh;border-top:1px solid #c4c6c0}
+.book h2{font:300 clamp(1.6rem,3vw,2.6rem)/1.15 var(--display);letter-spacing:-.015em}
+.book>div{min-width:0}
+.book ul span{overflow-wrap:anywhere}
+.book p{max-width:34em;margin-bottom:1.4rem}
+.book ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:.4rem 2rem;max-width:34em}
+.book ul a{color:var(--teal);text-underline-offset:3px}
+.book ul span{display:block;color:var(--fog);font-size:.85rem}
+footer{padding:0 var(--gutter) 28px;color:var(--fog);font-size:.85rem}
+
+/* phone: each genre shows its own photo, in a swipeable strip */
+@media (max-width:760px){
+  .index{min-height:0;padding:0}
+  .genres{width:auto;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px var(--gutter) 20px;scroll-padding:0 var(--gutter)}
+  .genres li{flex:0 0 78%;scroll-snap-align:start}
+  .genres figure{position:static;width:auto;opacity:1;padding:8px;aspect-ratio:2/3}
+  .genres li a{font-size:1.6rem;color:var(--graphite);margin-top:.5rem}
+  .genres a .who{height:auto;opacity:1}
+  .genres{flex-direction:row}
+  .genres li{display:flex;flex-direction:column-reverse;justify-content:flex-end}
+  .more{padding:0 var(--gutter) 2rem}
+  .book{grid-template-columns:1fr;padding-top:8vh}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <a class="name" href="./">Stanislav Sydorov</a>
+  <nav aria-label="Contacts">
+    <a href="https://www.instagram.com/sidssphoto/" target="_blank" rel="noopener">Instagram</a>
+    <a href="#book">Book a shoot</a>
+  </nav>
+</header>
+
+<main>
+  <section class="index" aria-label="Portfolio">
+    <ul class="genres">
+      <li class="on">
+        <a href="#beauty">Beauty<span class="who">Alina, make-up with feathers</span></a>
+        <figure><img src="../../portfolio/beauty/alina/05.jpg" alt="Woman with teal feather lashes framing her eyes with her hands"></figure>
+      </li>
+      <li>
+        <a href="#weddings">Weddings<span class="who">Julia and Anton, the morning</span></a>
+        <figure><img src="../../portfolio/weddings/juliaanton/01.jpg" alt="Bride in a lace robe holding a bouquet by the window" loading="lazy"></figure>
+      </li>
+      <li>
+        <a href="#lovestory">Love story<span class="who">Evgen and Gala, by the river</span></a>
+        <figure class="wide"><img src="../../portfolio/lovestory/evgengala/01.jpg" alt="Couple seen from behind, looking across a river under a clear sky" loading="lazy"></figure>
+      </li>
+      <li>
+        <a href="#campaign">Campaign<span class="who">Elya, studio</span></a>
+        <figure><img src="../../portfolio/campaign/elya/02.jpg" alt="Model in a nude bodysuit against a pink backdrop" loading="lazy"></figure>
+      </li>
+      <li>
+        <a href="#boudoir">Boudoir<span class="who">Olga, morning coffee</span></a>
+        <figure><img src="../../portfolio/boudoir/olga/03.jpg" alt="Woman in white lace holding a cup by a bright window" loading="lazy"></figure>
+      </li>
+      <li>
+        <a href="#sport">Sport<span class="who">Marina, in the gym</span></a>
+        <figure><img src="../../portfolio/sport/marina/01.jpg" alt="Athlete holding a dumbbell in a dark gym" loading="lazy"></figure>
+      </li>
+    </ul>
+  </section>
+  <p class="more"><a href="../../projects.html">See personal projects</a></p>
+
+  <section class="book" id="book">
+    <h2>Book a shoot</h2>
+    <div>
+      <p>Tell me what you have in mind and when. I reply with available dates and the price for your shoot.</p>
+      <ul>
+        <li><a href="https://t.me/sidssphoto">Telegram</a><span>fastest reply</span></li>
+        <li><a href="viber://chat?number=%2B491604542187">Viber</a><span>+49 160 454 21 87</span></li>
+        <li><a href="mailto:sidssphoto@icloud.com">Email</a><span>sidssphoto@icloud.com</span></li>
+        <li><a href="https://www.instagram.com/sidssphoto/" target="_blank" rel="noopener">Instagram</a><span>@sidssphoto</span></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>© Stanislav Sydorov</footer>
+
+<script>
+// Desktop: pointing at or tabbing to a genre shows its photo.
+const items=[...document.querySelectorAll('.genres li')];
+items.forEach(li=>{
+  const show=()=>{items.forEach(x=>x.classList.toggle('on',x===li))};
+  li.querySelector('a').addEventListener('mouseenter',show);
+  li.querySelector('a').addEventListener('focus',show);
+});
+</script>
+
+<a href="../index.html" style="position:fixed;left:12px;bottom:12px;z-index:9999;padding:6px 12px;background:rgba(0,0,0,.8);color:#fff;font:600 12px/1.4 Arial,sans-serif;letter-spacing:.05em;text-decoration:none;border-radius:4px">Concept &middot; all versions</a>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Site versions — Stanislav Sydorov Photography</title>
+  <meta name="description" content="All versions of the Stanislav Sydorov photography website.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" sizes="32x32" href="../ico/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&amp;family=Raleway:wght@400;700&amp;display=swap">
+  <style>
+    :root { --ink: #000; --paper: #fff; --muted: #666; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Raleway', Arial, sans-serif; }
+    header { background: var(--ink); color: var(--paper); text-align: center; padding: 1.25rem 1rem; }
+    header a { color: var(--paper); text-decoration: none; font-family: 'Poiret One', Arial, sans-serif;
+               font-size: clamp(1.6rem, 5vw, 2.6rem); text-transform: uppercase; letter-spacing: .05em; }
+    h1 { font-family: 'Poiret One', Arial, sans-serif; font-weight: 400; text-transform: uppercase;
+         letter-spacing: .1em; text-align: center; margin: 2rem 1rem .5rem; font-size: clamp(1.4rem, 4vw, 2rem); }
+    .intro { text-align: center; color: var(--muted); margin: 0 1rem 2rem; }
+    .list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px;
+            max-width: 1200px; margin: 0 auto; padding: 0 16px 3rem; }
+    .card { display: block; color: inherit; text-decoration: none; border: 1px solid #ddd;
+            transition: transform .3s ease, box-shadow .3s ease; }
+    .card:hover, .card:focus-visible { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,.12); }
+    .card:focus-visible { outline: 2px solid #4d90fe; outline-offset: 2px; }
+    .card img { display: block; width: 100%; height: auto; aspect-ratio: 8 / 5; object-fit: cover; border-bottom: 1px solid #ddd; }
+    .card div { padding: .9rem 1rem 1.1rem; }
+    .tag { display: inline-block; font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+           padding: .15rem .5rem; border: 1px solid var(--ink); margin-bottom: .5rem; }
+    .tag.now { background: var(--ink); color: var(--paper); }
+    .card h2 { margin: 0 0 .35rem; font-size: 1.15rem; }
+    .card p { margin: 0; color: var(--muted); font-size: .92rem; line-height: 1.45; }
+    footer { background: var(--ink); color: var(--paper); text-align: center; font-size: .8rem; padding: .9rem; }
+    footer a { color: var(--paper); }
+    @media (prefers-reduced-motion: reduce) { .card { transition: none; } }
+  </style>
+</head>
+<body>
+  <header><a href="../index.html">Stanislav&nbsp;Sydorov</a></header>
+  <main>
+    <h1>Site versions</h1>
+    <p class="intro">Every version of the site is kept and can be opened here. The current one is shown at the main address.</p>
+    <div class="list">
+      <a class="card" href="../index.html">
+        <img src="previews/v2.jpg" alt="Version 2 home page" width="800" height="500">
+        <div>
+          <span class="tag now">Current</span>
+          <h2>Version 2 &mdash; full-screen carousel</h2>
+          <p>November 2026. Full-screen photo carousel on the home page, animated albums, surname Sydorov, new phone number.</p>
+        </div>
+      </a>
+      <a class="card" href="v3-concept/index.html">
+        <img src="previews/v3-concept.jpg" alt="Concept home page" width="800" height="500">
+        <div>
+          <span class="tag">Concept</span>
+          <h2>Redesign concept</h2>
+          <p>November 2026. A different look: light background, large genre list with a changing photo. Home page only.</p>
+        </div>
+      </a>
+      <a class="card" href="v1-cleanup/index.html">
+        <img src="previews/v1.jpg" alt="Version 1 home page" width="800" height="500">
+        <div>
+          <span class="tag">Version 1</span>
+          <h2>Version 1 &mdash; fixed and completed</h2>
+          <p>November 2026. All errors fixed, pages for every section, optimised photos, new mobile menu.</p>
+        </div>
+      </a>
+      <a class="card" href="v0-original/index.html">
+        <img src="previews/v0.jpg" alt="Original home page" width="800" height="500">
+        <div>
+          <span class="tag">Version 0</span>
+          <h2>Original site (2021)</h2>
+          <p>The site as it was before the changes. Only the Projects section worked; kept for reference.</p>
+        </div>
+      </a>
+    </div>
+  </main>
+  <footer>&copy; Stanislav Sydorov &middot; <a href="../index.html">Back to the site</a></footer>
+</body>
+</html>

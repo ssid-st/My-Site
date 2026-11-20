@@ -267,7 +267,7 @@ def page(filename, title, description, body, active=None, extra_scripts='', body
     <ul class="social-icons">
 {social}
     </ul>
-    <p class="copyright">&copy; 2018&ndash;{date.today().year} {SITE_NAME}. All rights reserved.</p>
+    <p class="copyright">&copy; 2018&ndash;{date.today().year} {SITE_NAME}. All rights reserved. &middot; <a href="versions/index.html">Site versions</a></p>
   </footer>
 
   <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
