@@ -47,5 +47,5 @@ Settings → Pages → Deploy from a branch → `main` / `(root)`. `404.html` в
 | `versions/v1-cleanup/` | Версия 1: исправленный и дополненный сайт |
 | `versions/v0-original/` | Исходный сайт 2021 года |
 
-Фото у всех версий общие (`portfolio/`), копий нет. В git версии также отмечены тегами `v1`, `v2`.
+Фото у всех версий общие (`portfolio/`), копий нет.
 Чтобы сохранить текущую версию перед новыми изменениями, скопируйте HTML, `css/` и `js/` в `versions/vN-название/`, поменяйте в HTML пути `portfolio/`, `ico/`, `icons/`, `vendor/`, `images/` на `../../…` и добавьте карточку в `versions/index.html`.
