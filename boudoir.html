@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script>document.documentElement.classList.add('js')</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <script>(function(d){d.classList.add('js');try{var t=localStorage.getItem('theme');if(t)d.setAttribute('data-theme',t)}catch(e){}})(document.documentElement)</script>
   <title>Boudoir — Stanislav Sydorov Photography</title>
-  <meta name="description" content="Boudoir photography. Stanislav Sydorov — photographer. Love story, wedding, beauty, campaign, sport and boudoir photography.">
+  <meta name="description" content="Boudoir photography. Stanislav Sydorov, photographer. Love story, wedding, beauty, campaign, sport and boudoir photography.">
   <meta name="author" content="Stanislav Sydorov">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Boudoir — Stanislav Sydorov Photography">
-  <meta property="og:description" content="Boudoir photography. Stanislav Sydorov — photographer. Love story, wedding, beauty, campaign, sport and boudoir photography.">
-  <meta name="theme-color" content="#000000">
+  <meta property="og:description" content="Boudoir photography. Stanislav Sydorov, photographer. Love story, wedding, beauty, campaign, sport and boudoir photography.">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#141415">
   <link rel="apple-touch-icon" sizes="180x180" href="ico/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="ico/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="ico/favicon-16x16.png">
@@ -20,8 +21,7 @@
   <meta name="msapplication-config" content="ico/browserconfig.xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&amp;family=Raleway:wght@400;700&amp;display=swap">
-  <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&amp;family=Raleway:wght@400;600;700&amp;display=swap">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -29,41 +29,46 @@
 
   <header class="site-header">
     <a class="site-title" href="index.html">Stanislav&nbsp;Sydorov</a>
-  </header>
-
-  <nav class="navbar navbar-expand-lg site-nav" aria-label="Main">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-menu"
-            aria-controls="main-menu" aria-expanded="false" aria-label="Toggle menu">Menu</button>
-    <div class="collapse navbar-collapse" id="main-menu">
-      <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="lovestory.html">Love story</a></li>
-          <li class="nav-item"><a class="nav-link" href="weddings.html">Weddings</a></li>
-          <li class="nav-item"><a class="nav-link" href="beauty.html">Beauty</a></li>
-          <li class="nav-item"><a class="nav-link" href="campaign.html">Campaign</a></li>
-          <li class="nav-item"><a class="nav-link" href="sport.html">Sport</a></li>
-          <li class="nav-item"><a class="nav-link active" href="boudoir.html" aria-current="page">Boudoir</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul class="nav-links">
+          <li style="--n:0"><a href="projects.html">Projects</a></li>
+          <li style="--n:1"><a href="lovestory.html">Love story</a></li>
+          <li style="--n:2"><a href="weddings.html">Weddings</a></li>
+          <li style="--n:3"><a href="beauty.html">Beauty</a></li>
+          <li style="--n:4"><a href="campaign.html">Campaign</a></li>
+          <li style="--n:5"><a href="sport.html">Sport</a></li>
+          <li style="--n:6"><a href="boudoir.html" aria-current="page">Boudoir</a></li>
+          <li style="--n:7"><a href="contact.html">Contact</a></li>
       </ul>
-    </div>
-  </nav>
+      <div class="nav-tools">
+        <div class="lang-switch" role="group" aria-label="Language">
+          <a href="boudoir.html" hreflang="en" lang="en" aria-current="true">EN</a>
+          <a href="de/boudoir.html" hreflang="de" lang="de">DE</a>
+          <a href="ru/boudoir.html" hreflang="ru" lang="ru">RU</a>
+        </div>
+        <button type="button" class="theme-toggle" aria-label="Switch light or dark theme" title="Switch light or dark theme"><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.2 8.2 0 0 1 9.5 4a8.2 8.2 0 1 0 10.5 10.5z"/></svg></button>
+      </div>
+    </nav>
+    <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-nav"
+            data-open="Menu" data-close="Close"><span class="menu-icon" aria-hidden="true"></span><span class="menu-label">Menu</span></button>
+  </header>
 
   <main id="content">
     <header class="page-head">
       <h1 class="page-title">Boudoir</h1>
       <p class="intro">Boudoir photography. Tap an album to view it.</p>
     </header>
-    <div class="album-grid">
-      <button type="button" class="album reveal" style="--i:0" data-title="Kira" data-photos="[&quot;portfolio/boudoir/kira/01.jpg&quot;, &quot;portfolio/boudoir/kira/02.jpg&quot;, &quot;portfolio/boudoir/kira/03.jpg&quot;, &quot;portfolio/boudoir/kira/04.jpg&quot;, &quot;portfolio/boudoir/kira/05.jpg&quot;, &quot;portfolio/boudoir/kira/06.jpg&quot;]" aria-label="Open album Kira, 6 photos">
-        <img src="portfolio/boudoir/kira/cover.jpg" alt="" width="600" height="600" loading="lazy">
+    <div class="album-grid" data-labels="{&quot;viewer&quot;: &quot;Photo viewer&quot;, &quot;close&quot;: &quot;Close&quot;, &quot;prev_photo&quot;: &quot;Previous photo&quot;, &quot;next_photo&quot;: &quot;Next photo&quot;, &quot;photo&quot;: &quot;photo&quot;}">
+      <button type="button" class="album reveal" data-title="Kira" data-photos="[[&quot;img/boudoir/kira/01&quot;,1067,1600,&quot;data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAACwAQCdASoLABAAA4BaJZQAAb42t9PQAP5yN4wLH/pvU6dVZa7OCsKUjJNM8Q4zyyBrDt24kpJHPhbyQbzqX0pVcCrrNol4AAA=&quot;],[&quot;img/boudoir/kira/02&quot;,1067,1600,&quot;data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADQAQCdASoLABAAA4BaJZQAAksdol+ogAD9ioUE8tp08v0xdxGZ45i0EAamf1JAL4QHCkVDpahBgKV37MvX4wgRYeQAAA==&quot;],[&quot;img/boudoir/kira/03&quot;,1067,1600,&quot;data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoLABAAA4BaJZQCdAEPBS5kXAAA4nngphwe6Lzdw+49RpvdkuGdw2otLCO/99oUtQmAw0Sh3ybri/Re8bex2Av3asT8VHSqgSAAAA==&quot;],[&quot;img/boudoir/kira/04&quot;,1600,1067,&quot;data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAQAgCdASoQAAsAA4BaJQBOgB6KC5zsWvoAAP62wR4pd1OFZXSSrb3i5Rtb3Ran9y6Ha+tihN1UTuDeyx94kJeL5Edw9GP2Q5gSBHCOCWqKFiACbyIYAAAA&quot;],[&quot;img/boudoir/kira/05&quot;,1600,1036,&quot;data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADQAQCdASoQAAoAA4BaJQBOgB4F2S2cAAD+0+TU4t7+g7xpo8YtxYQgAQvswOeR/LS8X8kqc5AVv+NGwGVzmEE3L/iDCTQZWkQgjIqhcAAAAA==&quot;],[&quot;img/boudoir/kira/06&quot;,1600,1066,&quot;data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAwAgCdASoQAAsAA4BaJQBOgMVkxq0BjK3YAADgLNXNsKwwnUIm9JZnPsxPKGxFG+bGuSMzRrV0jeEfvtLaNM/NO8JPW1fYEyIoPIAmk0SAAA==&quot;]]" aria-label="Open album Kira, 6 photos" style="--lqip:url(data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADQAQCdASoNABAAA4BaJZQAAjUzfUkhoAD+Oqpc19P748ToOpxKyxmzmp0xxT55sj4OBWJzUIfeLRCVoV/53WG0oGi8XK1/jWKgAAAA)">
+        <img src="img/boudoir/kira/cover-480.webp" srcset="img/boudoir/kira/cover-480.webp 480w, img/boudoir/kira/cover-960.webp 960w" sizes="(max-width: 600px) 50vw, (max-width: 1400px) 25vw, 340px" alt="" width="480" height="600" loading="eager" decoding="async">
         <span class="album-caption">Kira<small>6 photos</small></span>
       </button>
-      <button type="button" class="album reveal" style="--i:1" data-title="Nastya" data-photos="[&quot;portfolio/boudoir/nastya/01.jpg&quot;, &quot;portfolio/boudoir/nastya/02.jpg&quot;, &quot;portfolio/boudoir/nastya/03.jpg&quot;, &quot;portfolio/boudoir/nastya/04.jpg&quot;, &quot;portfolio/boudoir/nastya/05.jpg&quot;, &quot;portfolio/boudoir/nastya/06.jpg&quot;, &quot;portfolio/boudoir/nastya/07.jpg&quot;, &quot;portfolio/boudoir/nastya/08.jpg&quot;, &quot;portfolio/boudoir/nastya/09.jpg&quot;, &quot;portfolio/boudoir/nastya/10.jpg&quot;, &quot;portfolio/boudoir/nastya/11.jpg&quot;, &quot;portfolio/boudoir/nastya/12.jpg&quot;, &quot;portfolio/boudoir/nastya/13.jpg&quot;, &quot;portfolio/boudoir/nastya/14.jpg&quot;, &quot;portfolio/boudoir/nastya/15.jpg&quot;, &quot;portfolio/boudoir/nastya/16.jpg&quot;, &quot;portfolio/boudoir/nastya/17.jpg&quot;, &quot;portfolio/boudoir/nastya/18.jpg&quot;, &quot;portfolio/boudoir/nastya/19.jpg&quot;, &quot;portfolio/boudoir/nastya/20.jpg&quot;, &quot;portfolio/boudoir/nastya/21.jpg&quot;, &quot;portfolio/boudoir/nastya/22.jpg&quot;, &quot;portfolio/boudoir/nastya/23.jpg&quot;, &quot;portfolio/boudoir/nastya/24.jpg&quot;, &quot;portfolio/boudoir/nastya/25.jpg&quot;]" aria-label="Open album Nastya, 25 photos">
-        <img src="portfolio/boudoir/nastya/cover.jpg" alt="" width="600" height="600" loading="lazy">
+      <button type="button" class="album reveal" data-title="Nastya" data-photos="[[&quot;img/boudoir/nastya/01&quot;,1067,1600,&quot;data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAwAgCdASoLABAAA4BaJYwAD45Qb5qd9DAbAAD+9w1MSWX8D4Knd28zQDzDBPIpO2at/5SxBzE2aMMD8Z1AYl5QaIB0sxrTP4LYjaVAAAA=&quot;],[&quot;img/boudoir/nastya/02&quot;,1067,1600,&quot;data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAwAgCdASoLABAAA4BaJQBdgB9x+IemNPW8AAD+9hUmtJ3hhsT2oayr1FAx/bw/HQiECTvNB1FsZdmQ94yamjaBTj2VMiupOvEIeImjLUXX2SKxpIxRjsYXKdW+6AAA&quot;],[&quot;img/boudoir/nastya/03&quot;,1600,1067,&quot;data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACQAgCdASoQAAsAA4BaJQBOja/h4+4tzIDR1g6fAAD+ToEmv4QBu4/WM/tqMIjpP2ktbTClIrALNiPmKRCNwnckpOGfxeYFGbs/L50gGe247x250tcfHDiKPrHRCqcK4AA=&quot;],[&quot;img/boudoir/nastya/04&quot;,1067,1600,&quot;data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADwAQCdASoLABAAA4BaJYwCsADbPf4EaWQA/dSSebru9Zx2g5GgHoD5bE3z0WzGJ6vYNQZsW0uIT3Axq2w4bnB8qS1ilNAA&quot;],[&quot;img/boudoir/nastya/05&quot;,1067,1600,&quot;data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADwAQCdASoLABAAA4BaJYgCdADb670W+AAA/r3A3QAhfINwrdhKf17eTkm6u2Xo2AT7Oswy+9Z6Vuhx5OmJsZPjZmSOLVAA&quot;],[&quot;img/boudoir/nastya/06&quot;,1067,1600,&quot;data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoLABAAA4BaJQBOgBu00/w8pAAA/e2KM1/G9mOkuIstZHvI6Q1mYk9GVNv0tpOpYnvdxsxRQGsO8xOZAnT55dXk9qyw6ZQC8MAAAA==&quot;],[&quot;img/boudoir/nastya/07&quot;,1600,1067,&quot;data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAABQAgCdASoQAAsAA4BaJQBYdsXX2/BjaRo0bAAA/vTvkj5pOXix8DRf1b9kU1dzaksCsFlnYVwKZIZBNk4Oyo3jXuLpBsAyAxwNGaR7+YxFpDMPDr6f2Au6d10mljyMlAAAAA==&quot;],[&quot;img/boudoir/nastya/08&quot;,1067,1600,&quot;data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAwAgCdASoLABAAA4BaJZQCdH8AGEvoesU9gAD+9w7+C4i6g4CaNKV9QffYZhT6Nq0YWkkKWCtLGCQqvfpN2Zd88sHatHMI2t+/IW2Ef9x7XbKmasObQoIgBCO7kd9AgAA=&quot;],[&quot;img/boudoir/nastya/09&quot;,1067,1600,&quot;data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAABQAgCdASoLABAAA4BaJQBOgMXSts5VIW+PXyAAyuzHqeWiinoXSxDzyQtPfmyF8ktg9X28FpetyU8gvKPrRrFS6S5x+ad6nMCkp2fROFxlytipUiyIb87eAAA=&quot;],[&quot;img/boudoir/nastya/10&quot;,1600,1067,&quot;data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAQAgCdASoQAAsAA4BaJYwCsADG3ExRugYAAP703+cd8tKwSVcW8tA3AOalFCQrbKs1uBOVM5nqebI6CXwIIp43kX7j6yQMudHA4SBHm0P3wp5hCwJjGsGsipizHFmgAAA=&quot;],[&quot;img/boudoir/nastya/11&quot;,1067,1600,&quot;data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAACwAQCdASoLABAAA4BaJQBOgBThNHYAAPz9XP8QCA//Yce0L8LnZO11ah1J1ugdgctgvKJd6GJR73SmFe/MXdInVFa3XBsHg77e0mt+lZTQQJBlkb8tHEthgAA=&quot;],[&quot;img/boudoir/nastya/12&quot;,1067,1600,&quot;data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAQCdASoLABAAA4BaJYwCdADcVUZGwAD84d4gN3zhFE1QJGH5zTlOSTfg+xIJY0KkDiOzQQhq6ZtbXAO25eH6zv/TQ5squRKul2wUSOgXLqKaZYdZAAAA&quot;],[&quot;img/boudoir/nastya/13&quot;,1067,1600,&quot;data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAQCdASoLABAAA4BaJYwCdADZmNiaXcYA/uoB3rQDP7bH9at8lhJU8ZrK7B7mkBbsG7CCObjC3WsvXG9nuzA37Nd9L5v3ejAARQV9VO/qUrzRaPVNAAAA&quot;],[&quot;img/boudoir/nastya/14&quot;,1067,1600,&quot;data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAABwAgCdASoLABAAA4BaJZQCdAYvDbUARfwUs+YAAP4JrbDuP+HyBh/x9MRzMN7dYyOAISUI+XVmaGDSdFHKk/DJWgo0+TWqSS1voWkg/CI4FJEnDcoopbXLx957ECDGCUqjiYsMAAA=&quot;],[&quot;img/boudoir/nastya/15&quot;,1067,1600,&quot;data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAQAgCdASoLABAAA4BaJZQCdADdbSJl5ywAAPYJGQ2/1PdLc9I4keaeQYlJ+mvG4zJRMS5NpiwpgNZ3KC3ci16R1muHhHYqimXDJW2xZ8GAAA==&quot;],[&quot;img/boudoir/nastya/16&quot;,1067,1600,&quot;data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAAAQAgCdASoLABAAA4BaJZQCdADbPfD2HKIAAM4iZ9Id2EjiR6B5UKwQaM3uIgCPi6OgHvPHb99AYcV2FtCQg159k/HmCoNL1FJvAAAA&quot;],[&quot;img/boudoir/nastya/17&quot;,1067,1600,&quot;data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAACwAQCdASoLABAAA4BaJQBOgBtcru0AAP7fEZy0GLJaytkJ+sYUUK6j7byXXt/saQttaixngvSSYoiuEs3CQ1aVhYa4Q5rhyCL+qCAA&quot;],[&quot;img/boudoir/nastya/18&quot;,1067,1600,&quot;data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAQAgCdASoLABAAA4BaJYwCdADhTX9HTXqyAOHV/bE1Im/X0xfyNFeqCIUthYO2/+XMcK3ySCKswREl8nqDZsZOIGw3XLI/GPr6c9GwGSK+ko4UvjdnjMrgAAA=&quot;],[&quot;img/boudoir/nastya/19&quot;,1067,1600,&quot;data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAQAgCdASoLABAAA4BaJQBOgMWMtO9LbC1gAP610m47cZIjVUl40ATyxUzO+xlqtMmftBQd7xaEua+gT78psWLdW84LBwNst+rw38pL4ztT16X6QON1JHzFDUPKcNT8b1lIEDC3Bp9/YBAAAAA=&quot;],[&quot;img/boudoir/nastya/20&quot;,1067,1600,&quot;data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAABQAgCdASoLABAAA4BaJQBOgMYTyYidrXFw6uAA/gaacXGpqPtsTmQEBAZS56KnYH9yFLHoyQZUq1ospKE7xUdFcJ7nfz8F2+O6saN6ay6K6RRLnJWx1JV29OvgUd0GTQTbidyQnXzgX7H9Ye/sAAAA&quot;],[&quot;img/boudoir/nastya/21&quot;,1067,1600,&quot;data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAABQAgCdASoLABAAA4BaJQBOkCYig1UKPj3JhwAA+N+Y2oSM+VWLqYHDfegkpaT2HTHtnV578R82EZJnCF7CGrZtZnrJSZbNVzcK3p980GmNxr0+yZ+RQoLTMLNzAAAA&quot;],[&quot;img/boudoir/nastya/22&quot;,1067,1600,&quot;data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAABQAgCdASoLABAAA4BaJYwC7AYtfvs90aQ1RgAA/vYLTgnNoXKQhvpfnrfI/ZheCnyJSQ6trgJoky72Yi6lPl0oH8zyYLiEOO8cfBocNY6vESzwk43wTxTV1YJvBfAA&quot;],[&quot;img/boudoir/nastya/23&quot;,1067,1600,&quot;data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAQAgCdASoLABAAA4BaJYwCdADdBvJPEwQAAP73EJpFewjDmvXsP0tOG2fyobhc1tfgewIcBWstlBYofMADAIOzHDszxSdSRc4n7wgBCWGkLKN/PCIgJTAA&quot;],[&quot;img/boudoir/nastya/24&quot;,1067,1600,&quot;data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADwAQCdASoLABAAA4BaJZQCdAYtzZXq0QAA/rPr/bcRtk3xZvUAfH65xBu98P+C9T3wMQ7TjizY0ehdiTguv2Xv4dwy4ReB4nZzlmQGgNZqQWk9gAA=&quot;],[&quot;img/boudoir/nastya/25&quot;,1067,1600,&quot;data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAABQAgCdASoLABAAA4BaJZQCw7EWPZI49/1sHAAA/vYOZS8v9j5lk9RX2aaOHEVR6XYcXTgl6Gbz2Gz6D0YbxWFkQwKDgZlbXUclHvQNPTMpp80PV87EO5YsQXpMDwAA&quot;]]" aria-label="Open album Nastya, 25 photos" style="--lqip:url(data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAQCdASoNABAAA4BaJQAB8foPDXNebBwA/vcIGwMwrr3rNw4CMeLXyB2eVo1LV6EamwDhGep64XyNMrrmSZ8o3/Bovi1/dmDoNGZQWsIebMtjhWfkAA==)">
+        <img src="img/boudoir/nastya/cover-480.webp" srcset="img/boudoir/nastya/cover-480.webp 480w, img/boudoir/nastya/cover-960.webp 960w" sizes="(max-width: 600px) 50vw, (max-width: 1400px) 25vw, 340px" alt="" width="480" height="600" loading="eager" decoding="async">
         <span class="album-caption">Nastya<small>25 photos</small></span>
       </button>
-      <button type="button" class="album reveal" style="--i:2" data-title="Olga" data-photos="[&quot;portfolio/boudoir/olga/01.jpg&quot;, &quot;portfolio/boudoir/olga/02.jpg&quot;, &quot;portfolio/boudoir/olga/03.jpg&quot;, &quot;portfolio/boudoir/olga/04.jpg&quot;, &quot;portfolio/boudoir/olga/05.jpg&quot;, &quot;portfolio/boudoir/olga/06.jpg&quot;, &quot;portfolio/boudoir/olga/07.jpg&quot;, &quot;portfolio/boudoir/olga/08.jpg&quot;, &quot;portfolio/boudoir/olga/09.jpg&quot;, &quot;portfolio/boudoir/olga/10.jpg&quot;, &quot;portfolio/boudoir/olga/11.jpg&quot;, &quot;portfolio/boudoir/olga/12.jpg&quot;, &quot;portfolio/boudoir/olga/13.jpg&quot;, &quot;portfolio/boudoir/olga/14.jpg&quot;, &quot;portfolio/boudoir/olga/15.jpg&quot;, &quot;portfolio/boudoir/olga/16.jpg&quot;, &quot;portfolio/boudoir/olga/17.jpg&quot;, &quot;portfolio/boudoir/olga/18.jpg&quot;, &quot;portfolio/boudoir/olga/19.jpg&quot;, &quot;portfolio/boudoir/olga/20.jpg&quot;, &quot;portfolio/boudoir/olga/21.jpg&quot;]" aria-label="Open album Olga, 21 photos">
-        <img src="portfolio/boudoir/olga/cover.jpg" alt="" width="600" height="600" loading="lazy">
+      <button type="button" class="album reveal" data-title="Olga" data-photos="[[&quot;img/boudoir/olga/01&quot;,1067,1600,&quot;data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAADwAQCdASoLABAAA4BaJYwCdAED/Ftrd4AA/vfxMVQymFaleZHEBIFgIS2V1NilpB/fHh8gAAA=&quot;],[&quot;img/boudoir/olga/02&quot;,1067,1600,&quot;data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADwAQCdASoLABAAA4BaJZQAAlxdBGxzsQAA/vZlgWKnG7CRF2qhxjvMk6fHwHRWLlyZNLDzjzuz7CIkIiETfY0IAAA=&quot;],[&quot;img/boudoir/olga/03&quot;,1067,1600,&quot;data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAQAgCdASoLABAAA4BaJYwCdAEQaHyTnYQAAP4LSRLq7SAOy3wlgHU97vqVivHUo5PBb3R10ON7ji45Cvu+s8rmrg1Tte1fKalOLnGYXfhlQAAA&quot;],[&quot;img/boudoir/olga/04&quot;,1067,1600,&quot;data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAACwAgCdASoLABAAA4BaJZQCdIExgpDBNfBjpgZTGAAA/vcO8kEUpu0aMrXe/m1PmwWOOgJXaubB2gkqKQ5T39HSnSLj10RG7PfTFO6kq11Xo3cB2Emf+E+/c4AAAA==&quot;],[&quot;img/boudoir/olga/05&quot;,1067,1600,&quot;data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAQCdASoLABAAA4BaJYwAAucVI+asgAD+9/CZnLotUOCvfVnMuRZ2OjQtnXNfxgVXHsxZ+G3XU13XmIxHtwBgIAA=&quot;],[&quot;img/boudoir/olga/06&quot;,1067,1600,&quot;data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAAAQAgCdASoLABAAA4BaJZQC7ADdZPBcKsAAAP7039C7f2ue9cHi1yX+5GsKKb2hd8Zh9GrTcR5Oe/MewQb8TIo8jKLviPQ/28/xoAAA&quot;],[&quot;img/boudoir/olga/07&quot;,1067,1600,&quot;data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAQAgCdASoLABAAA4BaJaACdADp1qbMt9KAAP5oxM+zbTmnw+HedQhXnNMAXxCDI7TxOd9CbcIg87W9FFv+N5J6+9q6j20hclybN9L8NQMggetOsg1pZoXbuc1fcOCq62gAAA==&quot;],[&quot;img/boudoir/olga/08&quot;,1067,1600,&quot;data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAAAwAgCdASoLABAAA4BaJZACdAD0u192uGxGAAD+7WHjAEJx1fjw5Zu+2sx5f3OS9+ZKzc2qfrwWO1ge2Ocx3j83buBF6+RXApdidDBia/Z9Yxw/j1YSMJ+L5lZh5AJAFiVWIDAAAAA=&quot;],[&quot;img/boudoir/olga/09&quot;,1067,1600,&quot;data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAACwAQCdASoLABAAA4BaJYwAAlrGwQo0AP72QPgDUErj6OXK5XTmzbRvdbFx2OPkJPurBfQlpbQkGzzpEw8yQBdNAAA=&quot;],[&quot;img/boudoir/olga/10&quot;,1067,1600,&quot;data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAQAgCdASoLABAAA4BaJQBOgCKfDfeuugoAAPl3GQnvZkT1j38uNbyGDHc+tiu7xkPZC/jb1QGPG3DD5Fgofqs06UGppzP+ZjXAyrUagAA=&quot;],[&quot;img/boudoir/olga/11&quot;,1067,1600,&quot;data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoLABAAA4BaJYwCdAEfUrcy8OAA/oogOV82zvI/ROONWyLK5XtNp2F5o9bpuJWg+B0XYinKY5BwJ18lTNAAAA==&quot;],[&quot;img/boudoir/olga/12&quot;,1067,1600,&quot;data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAQAgCdASoLABAAA4BaJZgCdAD0sevnleIAAP7n7lKtMkAzeiTKztsVUIeCqIKoXc7lOeINaTyyLj/TbGDCb3BSWP3PSQ4a5eJg1HwZJvdmQD3u5Sa++S6DSyEgwAAA&quot;],[&quot;img/boudoir/olga/13&quot;,1067,1600,&quot;data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAQAgCdASoLABAAA4BaJZgCdAEPEAe+pjIAAP7VFrFVfKWYqdXFnsiASK5nrKJT9TYV9FVN7LtCQx8zazYlLJI/DJR/2dXKjP4WT5ULGTH7knE0A7P+xrbZaYpZAAAA&quot;],[&quot;img/boudoir/olga/14&quot;,1067,1600,&quot;data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAQAgCdASoLABAAA4BaJaACdAEfbQUGTMIgAP7VEFfuXlXgkYo0nkv5I1JkSUk0O3fkQnJve1NspU3sc5M2SMAt8yOVaTNcmJWqWIApiZC7+gyrFwnLrOx2AeT4AAAA&quot;],[&quot;img/boudoir/olga/15&quot;,1067,1600,&quot;data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAABQAgCdASoLABAAA4BaJYgCdAYxj2aAeWhe8AAA/u1yJjgcR00JstoI2Rt1NEBDU8Uoln+fUJbO6eSPNj6oK0DXq+PM9vQK9gJxBNEuHQYhbi1pzIZGRRJskCHAAA==&quot;],[&quot;img/boudoir/olga/16&quot;,1067,1600,&quot;data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADwAQCdASoLABAAA4BaJZQCsADdRexkIAAA/u5aKYJJbluar1QfmcggMmW6SkLOpk6Js3X8Ptug3Yf1igfqCQe4a4FGgI8kAQAAAA==&quot;],[&quot;img/boudoir/olga/17&quot;,1067,1600,&quot;data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAQCdASoLABAAA4BaJZgCdADdKoZLpQAA/rhPbP6YQ3bmKIlVaAv+0Yd8oxCU/0NfF0tKRGApA2P5SeJRwuZ0ZAJvecqWz0AcpBpopdUc17DpVnIrOaAA&quot;],[&quot;img/boudoir/olga/18&quot;,1067,1600,&quot;data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAAAwAgCdASoLABAAA4BaJbACdAEWtbqiwZubYAD9te/J9i7Iua//qMrhyKzR9jZf9wAYfGxFqTAzOjsYrOUbmYHru3z3uH9GKBBtWEQV3A4ckJtJfKcHNmlOHRhvA6wIwxXQ60fK0k1UsAAA&quot;],[&quot;img/boudoir/olga/19&quot;,1067,1600,&quot;data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAQCdASoLABAAA4BaJagCdAD0tKRSlAAAzab3lojPu3mfGt8CIgdeKqlOEfGPZ70CcvHG8x0HLMZ/Ag5ngGaszSnE+AVAWm8BgOqqoBXVO+R2HxKweAAA&quot;],[&quot;img/boudoir/olga/20&quot;,1067,1600,&quot;data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAQAgCdASoLABAAA4BaJagCdAD0kD7ONr/wAPwfYGxzyKhWvRCEsmo4FZHni5MUr+ozewKe7wzbG6HUv+RiMgeAXbp/gmBatZ4Vd0p9DQXzEbeMWYi47nawix3gAA==&quot;],[&quot;img/boudoir/olga/21&quot;,1600,1067,&quot;data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAwAgCdASoQAAsAA4BaJZACdH8AEnd0huCMAADOOTBkun/piqfAE4Ct58ivSad2DvEJmrGWOEKBnWXJ59DDXrfIlCyLlHnEixdcmB26P8Io0wAfMZa81fXCv2xRMYAA&quot;]]" aria-label="Open album Olga, 21 photos" style="--lqip:url(data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAAAQAgCdASoNABAAA4BaJYwCdIDZE6+Zd53AAP738WcKFHy3C8ZBs5z5DaTS35xDv9qToO1R+u0wAA==)">
+        <img src="img/boudoir/olga/cover-480.webp" srcset="img/boudoir/olga/cover-480.webp 480w, img/boudoir/olga/cover-960.webp 960w" sizes="(max-width: 600px) 50vw, (max-width: 1400px) 25vw, 340px" alt="" width="480" height="600" loading="eager" decoding="async">
         <span class="album-caption">Olga<small>21 photos</small></span>
       </button>
     </div>
@@ -71,17 +76,17 @@
 
   <footer class="site-footer">
     <ul class="social-icons">
-        <li><a href="https://www.instagram.com/sidssphoto/" aria-label="Instagram — @sidssphoto" title="Instagram — @sidssphoto" target="_blank" rel="noopener noreferrer"><img src="icons/instagram.png" alt="" width="32" height="32"></a></li>
-        <li><a href="https://www.facebook.com/ssidorovphoto/" aria-label="Facebook — ssidorovphoto" title="Facebook — ssidorovphoto" target="_blank" rel="noopener noreferrer"><img src="icons/facebook.png" alt="" width="32" height="32"></a></li>
-        <li><a href="https://t.me/sidssphoto" aria-label="Telegram — @sidssphoto" title="Telegram — @sidssphoto" target="_blank" rel="noopener noreferrer"><img src="icons/telegram.png" alt="" width="32" height="32"></a></li>
-        <li><a href="tel:+491604542187" aria-label="Phone — +49 160 454 21 87" title="Phone — +49 160 454 21 87"><img src="icons/phone.png" alt="" width="32" height="32"></a></li>
-        <li><a href="viber://chat?number=%2B491604542187" aria-label="Viber — +49 160 454 21 87" title="Viber — +49 160 454 21 87"><img src="icons/viber.png" alt="" width="32" height="32"></a></li>
-        <li><a href="mailto:sidssphoto@icloud.com" aria-label="E-mail — sidssphoto@icloud.com" title="E-mail — sidssphoto@icloud.com"><img src="icons/mail.png" alt="" width="32" height="32"></a></li>
+        <li><a href="https://www.instagram.com/sidssphoto/" aria-label="Instagram: @sidssphoto" title="Instagram" target="_blank" rel="noopener noreferrer"><img src="icons/instagram.png" alt="" width="24" height="24"></a></li>
+        <li><a href="https://www.facebook.com/ssidorovphoto/" aria-label="Facebook: ssidorovphoto" title="Facebook" target="_blank" rel="noopener noreferrer"><img src="icons/facebook.png" alt="" width="24" height="24"></a></li>
+        <li><a href="https://t.me/sidssphoto" aria-label="Telegram: @sidssphoto" title="Telegram" target="_blank" rel="noopener noreferrer"><img src="icons/telegram.png" alt="" width="24" height="24"></a></li>
+        <li><a href="tel:+491604542187" aria-label="Phone: +49 160 454 21 87" title="Phone"><img src="icons/phone.png" alt="" width="24" height="24"></a></li>
+        <li><a href="viber://chat?number=%2B491604542187" aria-label="Viber: +49 160 454 21 87" title="Viber"><img src="icons/viber.png" alt="" width="24" height="24"></a></li>
+        <li><a href="mailto:sidssphoto@icloud.com" aria-label="E-mail: sidssphoto@icloud.com" title="E-mail"><img src="icons/mail.png" alt="" width="24" height="24"></a></li>
     </ul>
     <p class="copyright">&copy; 2018&ndash;2026 Stanislav Sydorov. All rights reserved. &middot; <a href="versions/index.html">Site versions</a></p>
   </footer>
 
-  <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
-  <script src="js/gallery.js"></script>
+  <script src="js/site.js" defer></script>
+  <script src="js/gallery.js" defer></script>
 </body>
 </html>
