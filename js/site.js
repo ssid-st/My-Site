@@ -52,6 +52,26 @@
     });
   }
 
+  /* ---- Menu photo follows the hovered / focused item ---- */
+  var navImg = document.querySelector('.nav-visual img');
+  if (navImg) {
+    var showNavImg = function (src) {
+      if (!src || navImg.getAttribute('src') === src) return;
+      navImg.classList.add('is-swapping');
+      var pre = new Image();
+      pre.onload = function () {
+        navImg.src = src;
+        navImg.classList.remove('is-swapping');
+      };
+      pre.src = src;
+    };
+    document.querySelectorAll('.nav-links a[data-img]').forEach(function (a) {
+      var src = a.getAttribute('data-img');
+      a.addEventListener('pointerenter', function () { showNavImg(src); });
+      a.addEventListener('focus', function () { showNavImg(src); });
+    });
+  }
+
   /* ---- Header: hide on scroll down, show on scroll up ---- */
   var isHome = document.body.classList.contains('home');
   var hero = document.getElementById('hero');

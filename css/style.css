@@ -1759,3 +1759,145 @@ body.lb-lock {
     font-size: .68rem;
   }
 }
+
+/* ---------- Logo (A): small spaced first name over a large italic surname ---------- */
+.logo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1;
+  text-decoration: none;
+}
+.logo-first {
+  margin-bottom: .3rem;
+  padding-left: .12em;
+  font-family: var(--font-body);
+  font-size: .56rem;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: .58em;
+  text-transform: uppercase;
+}
+.logo-last {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 2.4vw, 2.15rem);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: .86;
+}
+.logo-role {
+  margin-top: .7rem;
+  padding-left: .12em;
+  font-family: var(--font-body);
+  font-size: .62rem;
+  font-weight: 500;
+  letter-spacing: .5em;
+  text-transform: uppercase;
+  color: var(--muted);
+  -webkit-text-fill-color: var(--muted);
+}
+.site-footer .logo {
+  align-items: center;
+  margin-bottom: 1.8rem;
+}
+.site-footer .logo-first {
+  font-size: .78rem;
+  margin-bottom: .5rem;
+}
+.site-footer .logo-last {
+  font-size: clamp(3.2rem, 8vw, 5.6rem);
+}
+
+/* ---------- Full-screen menu: photo of the section and contacts ---------- */
+.nav-visual,
+.nav-contact {
+  display: none;
+}
+@media (max-width: 1199.98px) {
+  .site-nav {
+    justify-content: flex-start;
+    padding-top: calc(var(--header-h) + env(safe-area-inset-top) + 5vh);
+  }
+  .nav-links {
+    position: relative;
+    z-index: 2;
+  }
+  .nav-links a {
+    font-size: min(9.5vw, 6.4vh, 3.6rem);
+  }
+  .nav-tools {
+    position: relative;
+    z-index: 2;
+    margin-top: auto;
+  }
+  .nav-contact {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .35rem;
+    font-size: .8rem;
+    letter-spacing: .12em;
+  }
+  .nav-contact a {
+    text-decoration: none;
+    opacity: .85;
+  }
+  .nav-contact .btn {
+    margin-top: .8rem;
+  }
+  .menu-open .nav-contact {
+    animation: fade-up 500ms 260ms var(--ease-out) both;
+  }
+}
+/* tablets and small laptops: the empty half gets a big photo */
+@media (min-width: 700px) and (max-width: 1199.98px) {
+  .nav-visual {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    width: 46%;
+    overflow: hidden;
+  }
+  .nav-visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, var(--bg) 0, rgba(0, 0, 0, 0) 35%),
+                linear-gradient(0deg, rgba(0, 0, 0, .75) 0, rgba(0, 0, 0, 0) 45%);
+  }
+  .nav-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.06);
+    transition: opacity 260ms ease, transform 900ms var(--ease-out);
+  }
+  .menu-open .nav-visual img {
+    transform: none;
+  }
+  .nav-visual img.is-swapping {
+    opacity: 0;
+  }
+  .nav-contact {
+    position: absolute;
+    right: var(--gutter);
+    bottom: calc(2rem + env(safe-area-inset-bottom));
+    align-items: flex-end;
+    color: #fff;
+    text-align: right;
+  }
+}
+@media (max-width: 699.98px) {
+  .nav-contact {
+    margin-top: 1.6rem;
+  }
+  .nav-tools {
+    margin-top: 1.6rem;
+  }
+}
+.nav-social { display: block; white-space: nowrap; }

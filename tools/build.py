@@ -442,6 +442,8 @@ def album_title(slug, lang='en'):
 FORM_EMAIL = 'sidssphoto@icloud.com'
 FORM_ENDPOINT = f'https://formsubmit.co/ajax/{FORM_EMAIL}'
 
+NAV_IMAGES = {}
+
 # Home page "Selected works": photos from the carousel list, shown in two staggered columns
 SELECTED = [1, 3, 4, 6, 7, 9, 10, 11]
 
@@ -493,7 +495,7 @@ def page(lang, filename, title, description, body, active=None, scripts=(), body
     pre = '' if lang == 'en' else '../'          # path back to the site root
     nav_items = [(f'{s}.html', t['sections'][s][0]) for s in SECTION_KEYS] + [('contact.html', t['contact'])]
     nav = '\n'.join(
-        f'          <li style="--n:{i}"><a href="{href}"'
+        f'          <li style="--n:{i}"><a href="{href}" data-img="{pre}{NAV_IMAGES.get(href, "")}"'
         f'{" aria-current=\"page\"" if href == active else ""}><span class="nav-num">{num(i + 1)}</span>{e(label)}</a></li>'
         for i, (href, label) in enumerate(nav_items))
     langs = '\n'.join(
@@ -538,11 +540,17 @@ def page(lang, filename, title, description, body, active=None, scripts=(), body
   <a class="skip-link" href="#content">{e(t['skip'])}</a>
 
   <header class="site-header">
-    <a class="site-title" href="index.html">Stanislav <em>Sydorov</em></a>
+    <a class="site-title logo" href="index.html" aria-label="Stanislav Sydorov"><span class="logo-first">Stanislav</span><span class="logo-last">Sydorov</span></a>
     <nav class="site-nav" id="site-nav" aria-label="{e(t['main_nav'])}">
       <ul class="nav-links">
 {nav}
       </ul>
+      <div class="nav-visual" aria-hidden="true"><img alt="" src="{pre}{NAV_IMAGES.get(active or '', NAV_IMAGES['projects.html'])}" loading="lazy"></div>
+      <div class="nav-contact">
+        <a href="tel:+491604542187">+49 160 454 21 87</a>
+        <span class="nav-social"><a href="https://t.me/sidssphoto" target="_blank" rel="noopener noreferrer">Telegram</a> · <a href="https://www.instagram.com/sidssphoto/" target="_blank" rel="noopener noreferrer">Instagram</a></span>
+        <button type="button" class="btn btn-accent" data-book aria-haspopup="dialog">{e(t['book'])}{ARROW}</button>
+      </div>
       <div class="nav-tools">
         <div class="lang-switch" role="group" aria-label="{e(t['language'])}">
 {langs}
@@ -559,7 +567,7 @@ def page(lang, filename, title, description, body, active=None, scripts=(), body
   </main>
 
   <footer class="site-footer">
-    <a class="footer-name" href="index.html">Stanislav <em>Sydorov</em></a>
+    <a class="footer-name logo" href="index.html" aria-label="Stanislav Sydorov"><span class="logo-first">Stanislav</span><span class="logo-last">Sydorov</span><span class="logo-role">{e(t["photographer"])}</span></a>
     <ul class="social-icons">
 {social}
     </ul>
@@ -820,6 +828,12 @@ def main():
 
     print('Preparing images…')
     albums = {s: collect_albums(s) for s in SECTION_KEYS}
+    # photo shown next to each item of the full-screen menu
+    for src, section in reversed(CAROUSEL):
+        NAV_IMAGES[f'{section}.html'] = photo_meta(src)[0] + '-800.webp'
+    for s in SECTION_KEYS:
+        NAV_IMAGES.setdefault(f'{s}.html', albums[s][0][2][1])
+    NAV_IMAGES['contact.html'] = photo_meta(CAROUSEL[0][0])[0] + '-800.webp'
     print('Building pages…')
     for lang, _ in LANGS:
         for s in SECTION_KEYS:
