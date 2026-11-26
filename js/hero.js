@@ -34,7 +34,15 @@
     if (i === index) return;
     load(i);
     load(i + 1);
-    slides[index].classList.remove('is-active');
+    var forward = i === (index + 1) % slides.length || (i > index && !(index === 0 && i === slides.length - 1));
+    hero.classList.toggle('is-reverse', !forward);
+    void slides[i].offsetWidth;            // apply the starting side of the curtain first
+    hero.querySelectorAll('.is-prev').forEach(function (s) { s.classList.remove('is-prev'); });
+    var old = slides[index];
+    old.classList.remove('is-active');
+    old.classList.add('is-prev');
+    clearTimeout(old._t);
+    old._t = setTimeout(function () { old.classList.remove('is-prev'); }, 1250);
     dots[index].classList.remove('is-active');
     dots[index].removeAttribute('aria-current');
     index = i;

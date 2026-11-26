@@ -82,6 +82,17 @@ T = {
         'viewer': 'Photo viewer', 'prev_photo': 'Previous photo', 'next_photo': 'Next photo', 'photo': 'photo',
         'not_found_title': 'Page not found', 'not_found': 'This page does not exist.', 'home': 'Go to the home page',
         'rights': 'All rights reserved.', 'versions': 'Site versions',
+        'genres': 'Genres', 'selected_works': 'Selected works', 'albums_n': 'albums',
+        'cta_title': 'Let’s create something beautiful together',
+        'cta_text': 'Tell me about your idea, and I will suggest a location, a mood and a date.',
+        'book': 'Book a session', 'view': 'View', 'scroll': 'Scroll',
+        'form_title': 'Book a session', 'form_intro': 'Leave a request and I will get back to you within a day.',
+        'f_name': 'Your name', 'f_contact': 'Phone, e-mail or Telegram', 'f_type': 'Type of shoot',
+        'f_type_any': 'Not sure yet', 'f_date': 'Preferred date', 'f_msg': 'Your idea (optional)',
+        'f_send': 'Send request', 'f_sending': 'Sending…',
+        'f_ok': 'Thank you! Your request has been sent. I will reply soon.',
+        'f_err': 'The request could not be sent. Please write to me directly:',
+        'or_write': 'Or write to me directly:',
         'albums': {'wedding-day': 'Wedding day'},
     },
     'de': {
@@ -111,6 +122,17 @@ T = {
         'viewer': 'Fotoansicht', 'prev_photo': 'Vorheriges Foto', 'next_photo': 'Nächstes Foto', 'photo': 'Foto',
         'not_found_title': 'Seite nicht gefunden', 'not_found': 'Diese Seite existiert nicht.', 'home': 'Zur Startseite',
         'rights': 'Alle Rechte vorbehalten.', 'versions': 'Versionen der Website',
+        'genres': 'Genres', 'selected_works': 'Ausgewählte Arbeiten', 'albums_n': 'Alben',
+        'cta_title': 'Lassen Sie uns gemeinsam etwas Schönes schaffen',
+        'cta_text': 'Erzählen Sie mir von Ihrer Idee, und ich schlage Ort, Stimmung und Termin vor.',
+        'book': 'Shooting buchen', 'view': 'Ansehen', 'scroll': 'Scrollen',
+        'form_title': 'Shooting buchen', 'form_intro': 'Hinterlassen Sie eine Anfrage, ich melde mich innerhalb eines Tages.',
+        'f_name': 'Ihr Name', 'f_contact': 'Telefon, E-Mail oder Telegram', 'f_type': 'Art des Shootings',
+        'f_type_any': 'Noch unsicher', 'f_date': 'Wunschtermin', 'f_msg': 'Ihre Idee (optional)',
+        'f_send': 'Anfrage senden', 'f_sending': 'Wird gesendet…',
+        'f_ok': 'Vielen Dank! Ihre Anfrage wurde gesendet. Ich antworte bald.',
+        'f_err': 'Die Anfrage konnte nicht gesendet werden. Bitte schreiben Sie mir direkt:',
+        'or_write': 'Oder schreiben Sie mir direkt:',
         'albums': {'wedding-day': 'Hochzeitstag'},
     },
     'ru': {
@@ -140,6 +162,17 @@ T = {
         'viewer': 'Просмотр фото', 'prev_photo': 'Предыдущее фото', 'next_photo': 'Следующее фото', 'photo': 'фото',
         'not_found_title': 'Страница не найдена', 'not_found': 'Такой страницы нет.', 'home': 'На главную',
         'rights': 'Все права защищены.', 'versions': 'Версии сайта',
+        'genres': 'Жанры', 'selected_works': 'Избранные работы', 'albums_n': 'альб.',
+        'cta_title': 'Давайте создадим что-то красивое вместе',
+        'cta_text': 'Расскажите о своей идее, а я предложу место, настроение и дату.',
+        'book': 'Записаться', 'view': 'Смотреть', 'scroll': 'Листайте',
+        'form_title': 'Запись на съёмку', 'form_intro': 'Оставьте заявку, и я отвечу в течение дня.',
+        'f_name': 'Ваше имя', 'f_contact': 'Телефон, e-mail или Telegram', 'f_type': 'Тип съёмки',
+        'f_type_any': 'Пока не знаю', 'f_date': 'Желаемая дата', 'f_msg': 'Ваша идея (необязательно)',
+        'f_send': 'Отправить заявку', 'f_sending': 'Отправляю…',
+        'f_ok': 'Спасибо! Заявка отправлена, я скоро отвечу.',
+        'f_err': 'Не получилось отправить заявку. Напишите мне напрямую:',
+        'or_write': 'Или напишите мне напрямую:',
         'albums': {'wedding-day': 'День свадьбы'},
     },
 }
@@ -404,6 +437,14 @@ def album_title(slug, lang='en'):
 # --------------------------------------------------------------------------
 # HTML
 # --------------------------------------------------------------------------
+# Requests from the booking form are e-mailed by FormSubmit (no account needed).
+# The very first request sends an activation e-mail to this address: confirm it once.
+FORM_EMAIL = 'sidssphoto@icloud.com'
+FORM_ENDPOINT = f'https://formsubmit.co/ajax/{FORM_EMAIL}'
+
+# Home page "Selected works": photos from the carousel list, shown in two staggered columns
+SELECTED = [1, 3, 4, 6, 7, 9, 10, 11]
+
 ICON_SUN = ('<svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/>'
             '<path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6'
             'M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>')
@@ -411,6 +452,40 @@ ICON_MOON = ('<svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true">'
              '<path d="M20 14.5A8.2 8.2 0 0 1 9.5 4a8.2 8.2 0 1 0 10.5 10.5z"/></svg>')
 CHEVRON_L = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-8 8 8 8"/></svg>'
 CHEVRON_R = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8"/></svg>'
+ARROW = '<svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>'
+CLOSE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>'
+
+
+def num(i):
+    return f'{i:02d}'
+
+
+def booking_dialog(lang):
+    t = T[lang]
+    options = ''.join(f'<option>{e(t["sections"][s][0])}</option>' for s in SECTION_KEYS if s != 'projects')
+    return f'''  <dialog class="booking" id="booking" aria-labelledby="booking-title">
+    <form class="booking-form" method="post" action="{FORM_ENDPOINT}" data-endpoint="{FORM_ENDPOINT}"
+          data-sending="{e(t['f_sending'])}" data-ok="{e(t['f_ok'])}" data-err="{e(t['f_err'])}">
+      <button type="button" class="booking-close" data-close aria-label="{e(t['close'])}">{CLOSE}</button>
+      <p class="eyebrow">{e(SITE_NAME)}</p>
+      <h2 id="booking-title" class="booking-title">{e(t['form_title'])}</h2>
+      <p class="booking-intro">{e(t['form_intro'])}</p>
+      <label class="field"><span>{e(t['f_name'])}</span><input name="name" autocomplete="name" required></label>
+      <label class="field"><span>{e(t['f_contact'])}</span><input name="contact" autocomplete="email" required></label>
+      <div class="field-row">
+        <label class="field"><span>{e(t['f_type'])}</span><select name="type"><option>{e(t['f_type_any'])}</option>{options}</select></label>
+        <label class="field"><span>{e(t['f_date'])}</span><input name="date" type="date"></label>
+      </div>
+      <label class="field"><span>{e(t['f_msg'])}</span><textarea name="message" rows="3"></textarea></label>
+      <input type="hidden" name="_subject" value="Website request / Anfrage / Заявка">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit" class="btn btn-accent booking-send">{e(t['f_send'])}</button>
+      <p class="booking-status" role="status" aria-live="polite"></p>
+      <p class="booking-direct">{e(t['or_write'])} <a href="mailto:{FORM_EMAIL}">{FORM_EMAIL}</a> · <a href="https://t.me/sidssphoto" target="_blank" rel="noopener noreferrer">Telegram</a></p>
+    </form>
+  </dialog>
+'''
 
 
 def page(lang, filename, title, description, body, active=None, scripts=(), body_class=''):
@@ -419,7 +494,7 @@ def page(lang, filename, title, description, body, active=None, scripts=(), body
     nav_items = [(f'{s}.html', t['sections'][s][0]) for s in SECTION_KEYS] + [('contact.html', t['contact'])]
     nav = '\n'.join(
         f'          <li style="--n:{i}"><a href="{href}"'
-        f'{" aria-current=\"page\"" if href == active else ""}>{e(label)}</a></li>'
+        f'{" aria-current=\"page\"" if href == active else ""}><span class="nav-num">{num(i + 1)}</span>{e(label)}</a></li>'
         for i, (href, label) in enumerate(nav_items))
     langs = '\n'.join(
         f'          <a href="{pre}{"" if code == "en" else folder + "/"}{filename}" hreflang="{code}" lang="{code}"'
@@ -456,14 +531,14 @@ def page(lang, filename, title, description, body, active=None, scripts=(), body
   <meta name="msapplication-config" content="{pre}ico/browserconfig.xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&amp;family=Raleway:wght@400;600;700&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Manrope:wght@400;500;700&amp;display=swap">
   <link rel="stylesheet" href="{pre}css/style.css">
 </head>
-<body{body_attr}>
+<body{body_attr} data-view="{e(t['view'])}">
   <a class="skip-link" href="#content">{e(t['skip'])}</a>
 
   <header class="site-header">
-    <a class="site-title" href="index.html">Stanislav&nbsp;Sydorov</a>
+    <a class="site-title" href="index.html">Stanislav <em>Sydorov</em></a>
     <nav class="site-nav" id="site-nav" aria-label="{e(t['main_nav'])}">
       <ul class="nav-links">
 {nav}
@@ -484,12 +559,16 @@ def page(lang, filename, title, description, body, active=None, scripts=(), body
   </main>
 
   <footer class="site-footer">
+    <a class="footer-name" href="index.html">Stanislav <em>Sydorov</em></a>
     <ul class="social-icons">
 {social}
     </ul>
     <p class="copyright">&copy; 2018&ndash;{date.today().year} {SITE_NAME}. {e(t['rights'])} &middot; <a href="{pre}versions/index.html">{e(t['versions'])}</a></p>
   </footer>
 
+  <button type="button" class="book-float" data-book aria-haspopup="dialog">{e(t['book'])}</button>
+{booking_dialog(lang)}
+  <div class="grain" aria-hidden="true"></div>
 {script_tags}</body>
 </html>
 '''
@@ -529,35 +608,59 @@ def collect_albums(section):
     return albums
 
 
+def big_tiles(n):
+    """Which album tiles are shown large (2 × 2) in the editorial grid."""
+    if n <= 2:
+        return {0}
+    return {i for i in range(n) if i == 0 or (i >= 5 and i % 7 == 5)}
+
+
 def build_section(lang, section, albums):
     t = T[lang]
     pre = '' if lang == 'en' else '../'
     title, intro = t['sections'][section]
+    big = big_tiles(len(albums))
     cards = []
     for n, (album, metas, (c1, c2, c_lqip)) in enumerate(albums):
         name = album_title(album, lang)
         count = count_label(lang, len(metas))
         data = json.dumps([[pre + b, w, h, q] for b, w, h, q in metas], separators=(',', ':'))
+        size = '(max-width: 700px) 100vw, 50vw' if n in big else '(max-width: 700px) 50vw, 25vw'
         cards.append(
-            f'      <button type="button" class="album reveal" data-title="{e(name)}" data-photos="{e(data)}" '
+            f'      <figure class="album-item reveal{" is-big" if n in big else ""}">\n'
+            f'        <button type="button" class="album" data-title="{e(name)}" data-photos="{e(data)}" '
             f'aria-label="{e(t["open_album"].format(name=name, count=count))}" style="--lqip:url({c_lqip})">\n'
-            f'        <img src="{pre}{c1}" srcset="{pre}{c1} {COVER_W}w, {pre}{c2} {COVER_W * 2}w" '
-            f'sizes="(max-width: 600px) 50vw, (max-width: 1400px) 25vw, 340px" alt="" '
-            f'width="{COVER_W}" height="{COVER_H}" loading="{"eager" if n < 4 else "lazy"}" decoding="async">\n'
-            f'        <span class="album-caption">{e(name)}<small>{e(count)}</small></span>\n'
-            f'      </button>')
+            f'          <img src="{pre}{c1}" srcset="{pre}{c1} {COVER_W}w, {pre}{c2} {COVER_W * 2}w" '
+            f'sizes="{size}" alt="" width="{COVER_W}" height="{COVER_H}" '
+            f'loading="{"eager" if n < 3 else "lazy"}" decoding="async">\n'
+            f'        </button>\n'
+            f'        <figcaption><span class="item-num">{num(n + 1)}</span>'
+            f'<span class="item-name">{e(name)}</span><span class="item-count">{e(count)}</span></figcaption>\n'
+            f'      </figure>')
+    index = SECTION_KEYS.index(section) + 1
     body = (f'    <header class="page-head">\n'
+            f'      <p class="eyebrow"><span class="accent">{num(index)}</span> / {num(len(SECTION_KEYS))} · {e(count_label(lang, sum(len(a[1]) for a in albums)))}</p>\n'
             f'      <h1 class="page-title">{e(title)}</h1>\n'
             f'      <p class="intro">{e(intro)} {e(t["tap"])}</p>\n'
             f'    </header>\n'
-            f'    <div class="album-grid" data-labels="{e(json.dumps({k: t[k] for k in ("viewer", "close", "prev_photo", "next_photo", "photo")}))}">\n'
-            + '\n'.join(cards) + '\n    </div>')
+            f'    <div class="album-grid count-{min(len(albums), 4)}" data-labels="{e(json.dumps({k: t[k] for k in ("viewer", "close", "prev_photo", "next_photo", "photo")}))}">\n'
+            + '\n'.join(cards) + '\n    </div>\n' + cta_block(lang))
     write(out_path(lang, f'{section}.html'),
           page(lang, f'{section}.html', title, f'{intro} {t["desc"]}', body,
                active=f'{section}.html', scripts=('gallery.js',)))
 
 
-def build_home(lang):
+def cta_block(lang):
+    t = T[lang]
+    return f'''    <section class="cta reveal">
+      <p class="eyebrow">{e(t['contact'])}</p>
+      <h2 class="cta-title">{e(t['cta_title'])}</h2>
+      <p class="cta-text">{e(t['cta_text'])}</p>
+      <button type="button" class="btn btn-accent" data-book aria-haspopup="dialog">{e(t['book'])}{ARROW}</button>
+    </section>'''
+
+
+def build_home(lang, albums):
     t = T[lang]
     pre = '' if lang == 'en' else '../'
     dots, items = [], []
@@ -571,7 +674,6 @@ def build_home(lang):
         dots.append(f'        <button type="button" class="{active.strip()}" aria-label="{e(t["slide"])} {i + 1}: {e(alt)}"'
                     f'{" aria-current=\"true\"" if i == 0 else ""}></button>')
         srcset = f'{pre}{base}-800.webp 800w, {pre}{base}-1600.webp 1600w'
-        # first two slides load immediately, the rest just before they show (js/hero.js)
         if i < 2:
             img_attr = f'src="{pre}{base}-1600.webp" srcset="{srcset}"'
             fetch = ' fetchpriority="high"' if i == 0 else ''
@@ -583,12 +685,45 @@ def build_home(lang):
             f'aria-label="{i + 1} / {total}">\n'
             f'        <img class="hero-photo" {img_attr} sizes="100vw" alt="{e(alt)}" width="{w}" height="{h}"{fetch}>\n'
             f'        <div class="hero-caption">\n'
-            f'          <span class="hero-count">{i + 1:02d} / {total:02d}</span>\n'
-            f'          <span class="hero-label">{e(label)}</span>\n'
-            f'          <span class="hero-album">{e(album)}</span>\n'
-            f'          <a class="hero-link" href="{section}.html">{e(t["view_gallery"])}</a>\n'
+            f'          <span class="hero-count"><span class="accent">{num(i + 1)}</span> / {num(total)} · {e(label)}</span>\n'
+            f'          <span class="hero-album"><span>{e(album)}</span></span>\n'
+            f'          <a class="hero-link" href="{section}.html">{e(t["view_gallery"])}{ARROW}</a>\n'
             f'        </div>\n'
             f'      </div>')
+
+    # genre index: one big line per section with a preview photo
+    carousel_by_section = {}
+    for src, section in CAROUSEL:
+        carousel_by_section.setdefault(section, src)
+    rows = []
+    for i, s in enumerate(SECTION_KEYS):
+        if s in carousel_by_section:
+            base, w, h, q = photo_meta(carousel_by_section[s])
+            img = f'{pre}{base}-800.webp'
+        else:
+            img = pre + albums[s][0][2][1]
+        n_albums = len(albums[s])
+        rows.append(
+            f'        <li class="reveal"><a class="genre" href="{s}.html" data-img="{img}">'
+            f'<span class="genre-num">{num(i + 1)}</span>'
+            f'<span class="genre-name">{e(t["sections"][s][0])}</span>'
+            f'<span class="genre-meta">{n_albums} {e(t["albums_n"])}</span>'
+            f'<img class="genre-thumb" src="{img}" alt="" loading="lazy" decoding="async" width="80" height="100">'
+            f'</a></li>')
+
+    works = []
+    for k, idx in enumerate(SELECTED):
+        src, section = CAROUSEL[idx]
+        base, w, h, q = photo_meta(src)
+        album = album_title(src.split('/')[2], lang)
+        works.append(
+            f'        <a class="work reveal" href="{section}.html" style="--lqip:url({q})">\n'
+            f'          <span class="work-frame" style="aspect-ratio:{w}/{h}"><img src="{pre}{base}-800.webp" '
+            f'srcset="{pre}{base}-800.webp 800w, {pre}{base}-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 45vw" '
+            f'alt="{e(t["sections"][section][0])}: {e(album)}" width="{w}" height="{h}" loading="lazy" decoding="async"></span>\n'
+            f'          <span class="work-cap"><span class="accent">{num(k + 1)}</span> {e(album)} <em>{e(t["sections"][section][0])}</em></span>\n'
+            f'        </a>')
+
     body = f'''    <h1 class="visually-hidden">{e(t['h1_home'])}</h1>
     <section class="hero" id="hero" data-interval="{CAROUSEL_INTERVAL}" aria-roledescription="carousel" aria-label="{e(t['selected'])}">
 {chr(10).join(items)}
@@ -597,7 +732,36 @@ def build_home(lang):
       <div class="hero-dots">
 {chr(10).join(dots)}
       </div>
-    </section>'''
+      <span class="hero-scroll" aria-hidden="true">{e(t['scroll'])}</span>
+    </section>
+
+    <section class="genres" aria-labelledby="genres-title">
+      <div class="section-head">
+        <p class="eyebrow"><span class="accent">I</span> — {e(t['genres'])}</p>
+        <h2 id="genres-title" class="visually-hidden">{e(t['genres'])}</h2>
+      </div>
+      <ul class="genre-list">
+{chr(10).join(rows)}
+      </ul>
+      <div class="genre-preview" aria-hidden="true"><img alt=""></div>
+    </section>
+
+    <section class="works" aria-labelledby="works-title">
+      <div class="section-head">
+        <p class="eyebrow"><span class="accent">II</span> — {e(t['selected_works'])}</p>
+        <h2 id="works-title" class="section-title">{e(t['selected_works'])}</h2>
+      </div>
+      <div class="works-grid">
+        <div class="works-col">
+{chr(10).join(works[0::2])}
+        </div>
+        <div class="works-col">
+{chr(10).join(works[1::2])}
+        </div>
+      </div>
+    </section>
+
+{cta_block(lang)}'''
     write(out_path(lang, 'index.html'),
           page(lang, 'index.html', '', t['desc'], body, body_class='home', scripts=('hero.js',)))
 
@@ -608,11 +772,13 @@ def build_contact(lang):
     links = '\n'.join(
         f'      <li><a href="{e(url)}"{NEW_TAB if new_tab else ""}>'
         f'<img src="{pre}icons/{icon}" alt="" width="28" height="28">'
-        f'<span>{e(t.get(label, label))}<small>{e(value)}</small></span></a></li>'
+        f'<span>{e(t.get(label, label))}<small>{e(value)}</small></span>{ARROW}</a></li>'
         for key, label, value, url, icon, new_tab in CONTACTS)
     body = (f'    <header class="page-head">\n'
+            f'      <p class="eyebrow"><span class="accent">{num(len(SECTION_KEYS) + 1)}</span> / {e(t["contact"])}</p>\n'
             f'      <h1 class="page-title">{e(t["contact_title"])}</h1>\n'
             f'      <p class="intro">{e(t["contact_intro"])}</p>\n'
+            f'      <button type="button" class="btn btn-accent" data-book aria-haspopup="dialog">{e(t["book"])}{ARROW}</button>\n'
             f'    </header>\n'
             f'    <ul class="contact-list">\n{links}\n    </ul>')
     write(out_path(lang, 'contact.html'),
@@ -658,7 +824,7 @@ def main():
     for lang, _ in LANGS:
         for s in SECTION_KEYS:
             build_section(lang, s, albums[s])
-        build_home(lang)
+        build_home(lang, albums)
         build_contact(lang)
         build_404(lang)
 
