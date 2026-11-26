@@ -21,24 +21,24 @@
   <meta name="msapplication-config" content="ico/browserconfig.xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&amp;family=Raleway:wght@400;600;700&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;family=Manrope:wght@400;500;700&amp;display=swap">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-view="View">
   <a class="skip-link" href="#content">Skip to content</a>
 
   <header class="site-header">
-    <a class="site-title" href="index.html">Stanislav&nbsp;Sydorov</a>
+    <a class="site-title" href="index.html">Stanislav <em>Sydorov</em></a>
     <nav class="site-nav" id="site-nav" aria-label="Main">
       <ul class="nav-links">
-          <li style="--n:0"><a href="projects.html">Projects</a></li>
-          <li style="--n:1"><a href="lovestory.html">Love story</a></li>
-          <li style="--n:2"><a href="weddings.html">Weddings</a></li>
-          <li style="--n:3"><a href="beauty.html">Beauty</a></li>
-          <li style="--n:4"><a href="campaign.html">Campaign</a></li>
-          <li style="--n:5"><a href="sport.html">Sport</a></li>
-          <li style="--n:6"><a href="boudoir.html">Boudoir</a></li>
-          <li style="--n:7"><a href="contact.html">Contact</a></li>
+          <li style="--n:0"><a href="projects.html"><span class="nav-num">01</span>Projects</a></li>
+          <li style="--n:1"><a href="lovestory.html"><span class="nav-num">02</span>Love story</a></li>
+          <li style="--n:2"><a href="weddings.html"><span class="nav-num">03</span>Weddings</a></li>
+          <li style="--n:3"><a href="beauty.html"><span class="nav-num">04</span>Beauty</a></li>
+          <li style="--n:4"><a href="campaign.html"><span class="nav-num">05</span>Campaign</a></li>
+          <li style="--n:5"><a href="sport.html"><span class="nav-num">06</span>Sport</a></li>
+          <li style="--n:6"><a href="boudoir.html"><span class="nav-num">07</span>Boudoir</a></li>
+          <li style="--n:7"><a href="contact.html"><span class="nav-num">08</span>Contact</a></li>
       </ul>
       <div class="nav-tools">
         <div class="lang-switch" role="group" aria-label="Language">
@@ -65,6 +65,7 @@
   </main>
 
   <footer class="site-footer">
+    <a class="footer-name" href="index.html">Stanislav <em>Sydorov</em></a>
     <ul class="social-icons">
         <li><a href="https://www.instagram.com/sidssphoto/" aria-label="Instagram: @sidssphoto" title="Instagram" target="_blank" rel="noopener noreferrer"><img src="icons/instagram.png" alt="" width="24" height="24"></a></li>
         <li><a href="https://www.facebook.com/ssidorovphoto/" aria-label="Facebook: ssidorovphoto" title="Facebook" target="_blank" rel="noopener noreferrer"><img src="icons/facebook.png" alt="" width="24" height="24"></a></li>
@@ -76,6 +77,31 @@
     <p class="copyright">&copy; 2018&ndash;2026 Stanislav Sydorov. All rights reserved. &middot; <a href="versions/index.html">Site versions</a></p>
   </footer>
 
+  <button type="button" class="book-float" data-book aria-haspopup="dialog">Book a session</button>
+  <dialog class="booking" id="booking" aria-labelledby="booking-title">
+    <form class="booking-form" method="post" action="https://formsubmit.co/ajax/sidssphoto@icloud.com" data-endpoint="https://formsubmit.co/ajax/sidssphoto@icloud.com"
+          data-sending="Sending…" data-ok="Thank you! Your request has been sent. I will reply soon." data-err="The request could not be sent. Please write to me directly:">
+      <button type="button" class="booking-close" data-close aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+      <p class="eyebrow">Stanislav Sydorov</p>
+      <h2 id="booking-title" class="booking-title">Book a session</h2>
+      <p class="booking-intro">Leave a request and I will get back to you within a day.</p>
+      <label class="field"><span>Your name</span><input name="name" autocomplete="name" required></label>
+      <label class="field"><span>Phone, e-mail or Telegram</span><input name="contact" autocomplete="email" required></label>
+      <div class="field-row">
+        <label class="field"><span>Type of shoot</span><select name="type"><option>Not sure yet</option><option>Love story</option><option>Weddings</option><option>Beauty</option><option>Campaign</option><option>Sport</option><option>Boudoir</option></select></label>
+        <label class="field"><span>Preferred date</span><input name="date" type="date"></label>
+      </div>
+      <label class="field"><span>Your idea (optional)</span><textarea name="message" rows="3"></textarea></label>
+      <input type="hidden" name="_subject" value="Website request / Anfrage / Заявка">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit" class="btn btn-accent booking-send">Send request</button>
+      <p class="booking-status" role="status" aria-live="polite"></p>
+      <p class="booking-direct">Or write to me directly: <a href="mailto:sidssphoto@icloud.com">sidssphoto@icloud.com</a> · <a href="https://t.me/sidssphoto" target="_blank" rel="noopener noreferrer">Telegram</a></p>
+    </form>
+  </dialog>
+
+  <div class="grain" aria-hidden="true"></div>
   <script src="js/site.js" defer></script>
 </body>
 </html>
